@@ -37,7 +37,6 @@
     <Compile Include="controllers\quiz1.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="server.js" />
     <Content Include="views\quiz1.pug">
       <SubType>Code</SubType>
     </Content>
