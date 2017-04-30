@@ -1,0 +1,9 @@
+{
+  "name": "borncamp_web",
+  "version": "0.0.0",
+  "description": "borncamp_web",
+  "main": "server.js",
+  "author": {
+    "name": "Dave"
+  }
+}
