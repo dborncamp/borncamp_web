@@ -1,9 +1,21 @@
 {
-  "name": "borncamp_web",
-  "version": "0.0.0",
-  "description": "borncamp_web",
-  "main": "server.js",
   "author": {
     "name": "Dave"
-  }
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "compression": "^1.6.2",
+    "connect-mongo": "^1.3.2",
+    "express": "^4.15.2",
+    "express-flash": "0.0.2",
+    "moment": "^2.18.1",
+    "mongoose": "^4.9.6",
+    "pug": "^2.0.0-beta9"
+  },
+  "description": "borncamp_web",
+  "devDependencies": {},
+  "main": "server.js",
+  "name": "borncamp_web",
+  "version": "0.0.0"
 }
