@@ -1,0 +1,31 @@
+#particle {
+    background-color: rgba(0, 0, 0, 1);
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:0;
+    opacity: 1
+}
+
+.jumbotron {
+    position: relative;
+    padding: 50px;
+}
+
+.myBackground {
+    background: rgba(200, 54, 54, .5);
+    color: rgba(255,255,255, 0);
+}
+
+#jumbo{
+    /* all other browsers */
+    background: rgba(200, 54, 54, .5);
+    color: rgb(255, 255, 255);
+}
+
+.inner{
+    color:rgb(250,250,250);
+    opacity: 100;
+}
