@@ -1,0 +1,17 @@
+﻿body {
+}
+
+li {
+    color: blue;
+}
+h1 {
+    color: orange;
+    border: 5px solid rgb(0, 0, 0);
+    background: rgba(255, 255, 255, .2);
+}
+body {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ea/Hs-2016-13-a-large_web.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, .2);
+}

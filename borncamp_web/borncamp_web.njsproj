@@ -37,6 +37,7 @@
     <Compile Include="controllers\quiz1.js">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="views\css\StyleSheet1.css" />
     <Content Include="views\quiz1.pug">
       <SubType>Code</SubType>
     </Content>
@@ -51,6 +52,7 @@
     <Folder Include="controllers\" />
     <Folder Include="models\" />
     <Folder Include="views\" />
+    <Folder Include="views\css\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
