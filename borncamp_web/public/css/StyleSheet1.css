@@ -1,0 +1,76 @@
+﻿body {
+}
+
+body {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ea/Hs-2016-13-a-large_web.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+/*Element selectors*/
+li {
+    color: blue;
+}
+
+h1 {
+    color: orange;
+    border: 5px solid rgb(0, 0, 0);
+    background: rgba(255, 255, 255, .2);
+}
+
+
+/*IDs can only be used once*/
+#special {
+    color: aqua;
+    background-color: azure;
+}
+
+/*Classes can be used multiple times*/
+.highlight {
+    color: red;
+    border: 5px solid rgba(0, 0, 0, .5);
+}
+
+/* star (*) selector will select everything*/
+* {
+    color: black;
+}
+
+/*Descendant Selector
+    Will select things that are an 'a' inside an 'li'
+*/
+li a {
+    color: green;
+}
+
+/*Adjacent selector
+    Will select every "Sibling" so anything that is an ol that follows an h2
+*/
+h2 + ol {
+    border: 5px solid red;
+}
+
+/*Attribute selector
+    i.e. any href or images are a certain color
+    useful for coloring checkboxes differently or something like that
+    input[type='checkbox']
+    will only take the checkboxes out of all of the inputs
+*/
+a[href="https://www.google.com"] {
+    background: yellow;
+}
+
+/*Can also use psuedoselectors
+    get all of the checked check boxes
+*/
+input[type=checkbox]:checked {
+    margin-left: 50px;
+}
+
+/*nth of type
+    select the first h2 and do something with that
+*/
+h2:nth-of-type(1) {
+    color: purple;
+}

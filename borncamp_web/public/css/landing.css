@@ -1,0 +1,28 @@
+﻿#particle {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/ea/Hs-2016-13-a-large_web.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 1
+}
+
+.jumbotron {
+    background: rgba(200, 54, 54, .5);
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding: 50px;
+}
+
+.inner {
+    color: rgb(250,250,250);
+    opacity: 1;
+}
+
+body {
+    padding-top: 150px;
+}
