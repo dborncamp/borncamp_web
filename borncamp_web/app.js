@@ -5,6 +5,7 @@ const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
 const expressValidator = require('express-validator');
 const chalk = require('chalk');
+const flash = require('express-flash');
 
 
 /**

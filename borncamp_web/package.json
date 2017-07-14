@@ -3,21 +3,21 @@
     "name": "Dave"
   },
   "dependencies": {
-    "angular": "^1.6.4",
+    "angular": "^1.6.5",
     "bootstrap": "^3.3.7",
     "chalk": "^1.1.3",
-    "compression": "^1.6.2",
+    "compression": "^1.7.0",
     "connect-mongo": "^1.3.2",
     "errorhandler": "^1.5.0",
-    "express": "^4.15.2",
+    "express": "^4.15.3",
     "express-flash": "0.0.2",
     "express-status-monitor": "^0.1.9",
-    "express-validator": "^3.2.0",
+    "express-validator": "^3.2.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.9.6",
-    "morgan": "^1.8.1",
+    "mongoose": "^4.11.2",
+    "morgan": "^1.8.2",
     "path": "^0.12.7",
-    "pug": "^2.0.0-beta9"
+    "pug": "^2.0.0-rc.2"
   },
   "description": "borncamp_web",
   "devDependencies": {},
