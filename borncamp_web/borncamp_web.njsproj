@@ -45,6 +45,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\css\landing.css" />
+    <Content Include="public\css\StyleSheet1.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\landing.pug">
       <SubType>Code</SubType>
     </Content>
