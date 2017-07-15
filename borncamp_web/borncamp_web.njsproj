@@ -40,6 +40,9 @@
     <Compile Include="controllers\quiz1.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controllers\resumeController.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\js\particleCFG.js" />
     <Content Include="html\landingTest.html">
       <SubType>Code</SubType>
@@ -51,6 +54,7 @@
     <Content Include="public\css\StyleSheet1.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\other\BorncampResume2017_technical.pdf" />
     <Content Include="views\partials\footer.pug">
       <SubType>Code</SubType>
     </Content>
@@ -71,6 +75,9 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="views\resume.pug">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="html\" />
@@ -80,6 +87,7 @@
     <Folder Include="public\css\" />
     <Folder Include="public\js\" />
     <Folder Include="public\favicon\" />
+    <Folder Include="public\other\" />
     <Folder Include="views\" />
     <Folder Include="views\partials\" />
   </ItemGroup>
