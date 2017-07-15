@@ -4,6 +4,6 @@
  */
 exports.index = (req, res) => {
     res.render('landing', {
-        title: 'Dave Borncamp'
+        title: "Dave's Landing"
     });
 };

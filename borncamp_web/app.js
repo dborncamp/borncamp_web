@@ -13,7 +13,7 @@ const flash = require('express-flash');
  */
 const quiz1Controller = require('./controllers/quiz1');
 const landingController = require('./controllers/landingController');
-
+const resumeController = require('./controllers/resumeController');
 
 /**
  * Set up express
@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', landingController.index);
 app.get('/quiz1', quiz1Controller.index);
+app.get('/resume', resumeController.index);
 
 
 /**
