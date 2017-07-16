@@ -5,6 +5,7 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='csrf-token', content=_csrf)
+    meta(name="author", content="Dave Borncamp, David Borncamp")
     title #{title} - Dave Borncamp
 
     link(rel="apple-touch-icon", sizes="76x76", href="favicon/apple-touch-icon.png")
@@ -17,12 +18,11 @@ html
     link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     link(href='css/footer.css' rel='stylesheet' type='text/css')
   body
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
     include partials/header
 
     .contain
       block content
 
     include partials/footer
-
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")

@@ -1,10 +1,7 @@
 ﻿.footer {
     background: rgba(200, 54, 54, .7);
     font-size: medium;
-    position: absolute;
-    bottom: 10px;
-}
-html {
     position: relative;
+    bottom: 10px;
     min-height: 100%;
 }
