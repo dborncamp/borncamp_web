@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "Dave"
+    "name": "Dave Borncamp"
   },
   "dependencies": {
     "angular": "^1.6.5",
@@ -14,14 +14,14 @@
     "express-status-monitor": "^0.1.9",
     "express-validator": "^3.2.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.2",
+    "mongoose": "^4.11.3",
     "morgan": "^1.8.2",
     "path": "^0.12.7",
     "pug": "^2.0.0-rc.2"
   },
   "description": "borncamp_web",
   "devDependencies": {},
-  "main": "server.js",
+  "main": "app.js",
   "name": "borncamp_web",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
