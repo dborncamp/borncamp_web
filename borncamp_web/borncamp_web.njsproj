@@ -43,6 +43,9 @@
     <Compile Include="controllers\resumeController.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\js\googleAnalytics.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\js\particleCFG.js" />
     <Content Include="html\landingTest.html">
       <SubType>Code</SubType>
