@@ -13,6 +13,7 @@
     color: rgb(255, 255, 255);
     position: relative;
     padding: 50px;
+    height: 100%;
 }
 
 .above{
@@ -23,6 +24,14 @@
 .inner {
     color: rgb(250,250,250);
     opacity: 1;
+}
+
+.headshot{
+    position: relative;
+    z-index: 1;
+    max-height: 300px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 body {

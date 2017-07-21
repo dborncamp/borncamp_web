@@ -21,7 +21,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <NodejsPort>1337</NodejsPort>
+    <NodejsPort>8080</NodejsPort>
     <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -58,6 +58,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\other\BorncampResume2017_technical.pdf" />
+    <Content Include="public\pictures\dborncamp_hair_small.jpg" />
     <Content Include="views\partials\footer.pug">
       <SubType>Code</SubType>
     </Content>
@@ -91,6 +92,7 @@
     <Folder Include="public\js\" />
     <Folder Include="public\favicon\" />
     <Folder Include="public\other\" />
+    <Folder Include="public\pictures\" />
     <Folder Include="views\" />
     <Folder Include="views\partials\" />
   </ItemGroup>
