@@ -1,0 +1,113 @@
+extends layout
+
+block content
+  link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css')
+  link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css')
+  link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css')
+  link(rel='stylesheet', type='text/css', href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css')
+  link(rel='stylesheet', type='text/css', href='http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css')
+  link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(href="css/calendar.scss")
+
+  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
+  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js')
+  script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js")
+  script(type='text/javascript', src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js")
+  script(type='text/javascript', src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js")
+  script(type='text/javascript', src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+  script(type='text/javascript', src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js")
+  script(src="js/calendar.js")
+  script(src="js/mypicker.js")
+  title Shuttle Calendar
+
+  br
+  br
+  h1 test!
+
+
+
+  .container
+    .row
+      .col-lg-12
+        #calJumbo.jumbotron.container-fluid
+          #shuttle-datepicker(class="input-daterange input-group")
+            .form-item
+              label.control-label(for='date') Depart on
+              input#date.form-control(name='date', placeholder='MM/DD/YYY', type="date")
+            .form-item
+              label.control-label(for='time') at this time:
+              input#time.form-control(name='time', placeholder='00:00', type="time")
+        //
+          .inner
+            h2 Make a shuttle request
+            br
+            p Either fill out this small form or click the calendar to request a shuttle.
+            form(method='POST', id='request')
+              input(type='hidden', name='_csrf', id='_csrf', value=_csrf)
+              .form-group
+                .col-sm-3.control-label
+                  label(for='date') Date
+                  #datepicker.input-append.date
+                    input(type='text', name='date', id='date', placeholder='date', required)
+                    span.add-on
+                      i(data-date-icon='icon-calendar')
+              .form-group
+                .col-sm-3.control-label
+                  label(for='time') Time
+                  #timepicker.input-append.date
+                    input(type='text', name='time', id='time', placeholder='time', required)
+                    span.add-on
+                      i(data-time-icon='icon-time')
+              .row
+              .form-group
+                label(class='col-sm-3 control-label', for='dept') Where are you coming from?
+                select(name = "dept" id="dept")
+                  option(value="muller") Muller
+                  option(value="muller") Muller
+                  option(value="rotunda") Rotunda
+                  option(value="stief") Steif
+              .form-group
+                label(class='col-sm-3 control-label', for='ariv') Where are you going to?
+                select(name = "ariv" id="ariv")
+                  option(value="rotunda") Rotunda
+                  option(value="muller") Muller
+                  option(value="stief") Steif
+              .form-group
+                .col-sm-offset-2.col-sm-8
+                  button.btn.btn-primary(type='submit')
+                      | Submit
+            .right
+              span#loading loading...
+              | &#x9;&#x9;&#x9;
+              span#script-warning
+                code shuttles
+                |  must be running.
+
+            script(type='text/javascript').
+                $.fn.datetimepicker.defaults = {
+                    maskInput: true,           // disables the text input mask
+                    pickDate: true,            // disables the date picker
+                    pickTime: true,            // disables de time picker
+                    pick12HourFormat: true,    // enables the 12-hour format time picker
+                    pickSeconds: false,        // disables seconds in the time picker
+                    startDate: -Infinity,      // set a minimum date
+                    endDate: Infinity          // set a maximum date
+                };
+
+            script(type='text/javascript').
+                $('#datepicker').datetimepicker({
+                    pickTime: false,
+                    format: 'MM/dd/yyyy',
+                    language: 'pt-BR'
+                });
+
+            script(type='text/javascript').
+                $('#timepicker').datetimepicker({
+                    pickDate: false,
+                    format: 'hh:mm',
+                    useUtc: true,
+                    language: 'pt-BR'
+                });
+        .row
+          #calendar
+
