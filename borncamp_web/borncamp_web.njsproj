@@ -43,13 +43,18 @@
     <Compile Include="controllers\resumeController.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controllers\slidesController.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\js\googleAnalytics.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\js\particleCFG.js" />
+    <Compile Include="public\js\stabilityPlot.js" />
     <Content Include="html\landingTest.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\css\aboutme.css" />
     <Content Include="public\css\footer.css">
       <SubType>Code</SubType>
     </Content>
@@ -58,6 +63,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\other\BorncampResume2017_technical.pdf" />
+    <Content Include="views\aboutme_slides.pug">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\partials\footer.pug">
       <SubType>Code</SubType>
     </Content>
