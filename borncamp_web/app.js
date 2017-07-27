@@ -35,7 +35,7 @@ app.get('/', landingController.index);
 app.get('/quiz1', quiz1Controller.index);
 app.get('/resume', resumeController.index);
 app.get('/slides', slidesController.index);
-
+app.get('/slides/aboutme', slidesController.aboutme);
 
 /**
  * Error Handler.
