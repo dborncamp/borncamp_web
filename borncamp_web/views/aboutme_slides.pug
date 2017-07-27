@@ -1,0 +1,132 @@
+﻿doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Dave Borncamp - About Me
+    meta(name='description', content='Dave Borncamp - About Me Slides')
+    meta(name='author', content='Dave Borncamp')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css')
+    link(rel='stylesheet', href='./aboutme.css')
+    // Printing and PDF exports
+    script.
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+  body
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    .reveal
+      // Any section element inside of this container is displayed as a slide
+      .slides
+        section
+          h1 Dave Borncamp
+          img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/headshot.jpg', alt='Dave Borncamp')
+          p
+            | Sr Research & Instrument Analyst on
+            | HST/ACS
+        section
+          section
+            h2 Background
+          section
+            h3 Education
+            ul
+              li 2011 - BA Astronomy @ CU Boulder
+              li 2013 - AS Computer Programming and Geographic Information Systems @ FRCC
+              li 2016 - MS Computer Science @ Towson University
+          section
+            h3 Work
+            ul
+              li
+                | 2010 - 2013: Southwest Research Institute
+                ul
+                  li Research on Pluto & Kuiper Belt Objects
+                  li New Horizons mission support
+              br
+              li
+                | 2013 - Present Space Telescope Science Institute
+                ul
+                  li
+                    a(href='#/Functional') Functional Work
+                  li
+                    a(href='#/Science') Science Work
+        section
+          section#Functional
+            h2 Functional Work
+            ul
+              li Dark Analysis
+              li Geometric Distortion
+              li Flat Fields
+              li ACS Pipeline
+          section
+            h2 Dark Analysis
+            p Look at how individual pixels evolve over time
+            script(src='https://cdn.plot.ly/plotly-latest.min.js')
+            #StabilityPlot.plotly-graph-div(sytle='width: 100%; height: 100%;')
+              script(src='js/stabilityPlot.js', type='text/javascript')
+              script(src="js/particleCFG.js")
+          section
+            h2 Geometric Distortion
+            p With Vera Platais - ACS has pretty bad distortions...
+            div
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/Before_distortion.png', alt='Before distortion correction')
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/After_distortion.png', alt='After distortion correction')
+          section
+            h2 Flat Fields
+            p Polarizers are complicated but cool
+            div
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/polflat.png', alt='Polarizer Flats')
+          section
+            h2 ACS Reference File Pipeline
+            p Maintain a piepline that REALLY needs to be rewritten
+            iframe.giphy-embed(src='https://giphy.com/embed/fwxPSNMdhCEvu', width='480', height='270', frameborder='0', allowfullscreen='')
+            p
+              a(href='https://giphy.com/gifs/desk-fwxPSNMdhCEvu')
+        section
+          section#Science
+            h2 Science Work
+            ul
+              li
+                | New Horizons
+                ul
+                  li Pluto
+                  li Kuiper Belt Objects
+              li Cosmic Rays
+              li Frontier Fields
+          section
+            h2 Pluto
+            p Occultations of Pluto
+            img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/fig1_redo3_color.png', alt='Pluto Occultation')
+          section
+            h2 New Horizons
+            p Searched for new KBOs for it to look at after Pluto encounter
+            div
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/tripletDiscovery.png', alt='25.6 Mag object')
+              video(controls='')
+                source(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/VNH0001.mp4', type='video/mp4', alt='VNH0001')
+                |                                     I'm sorry; your browser doesn't support HTML5 video in WebM with VP8/VP9 or MP4 with H.264.
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/HSTfield.png', alt='HST search field')
+          section
+            h2 Cosmic Rays
+            p Science with calibration images!
+            img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/dark.jpeg', alt='jcfubyecq')
+          section
+            h2 Frontier Fields
+            p Frontier Fields pipeline team
+            img(src='https://media.stsci.edu/uploads/story/display_image/1181/low_STSCI-H-p1720a-k-1340x520.png', alt='Abell 370')
+        section
+          h2 Thats it for now
+          iframe.giphy-embed(src='https://giphy.com/embed/NYrOxNlH7lwys', width='480', height='364', frameborder='0', allowfullscreen='')
+          p
+            a(href='https://giphy.com/gifs/end-NYrOxNlH7lwys')
+    script(src='https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js')
+    script.
+      Reveal.initialize(
+      {slideNumber: true,
+      width: "100%",
+      height: "100%",
+      margin: 0,
+      minScale: 1,
+      maxScale: 1
+      });
