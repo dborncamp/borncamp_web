@@ -11,13 +11,14 @@ block content
   .container
     .row
       .col-lg-12
-        #jumbo.jumbotron
+        #jumbo.jumbotron.container-fluid
           .inner
             h1 Welcome to Dave Borncamp's site!
             h2 About me:
-
+            img(src='pictures/dborncamp_hair_small.jpg' class=' pull-left headshot img-rounded img-responsive')
             p
-              | Hello, I am currently a Senior Research and Instrument Analyst at Space Telescope Science Institute.
+              
+              | I am currently a Senior Research and Instrument Analyst at Space Telescope Science Institute.
               | I work on the Hubble Space Telescope's Advanced Camera for Surveys instrument team where my work focuses on instrument calibrations to keep it producing awesome science.
               | This includes advanced studies of the detector's dark current, geometric distortion, and flat fields.
               | To accomplish my work I use Python and IDL for exploratory data analysis and software development.
@@ -29,6 +30,9 @@ block content
             p
               | For my science, I mainly focus on characterizations of Pluto and Kuiper Belt Objects.
               | This came out of my degree in Astronomy at the University of Colorado where I worked with Marc Buie at Southwest Research Institute to characterize pluto and discover KBO's for the New Horizons Mission to look at after it passes Pluto.
+            P
+              | A list of my piblishings can be found on 
+              a(href="http://adsabs.harvard.edu/cgi-bin/basic_connect?qsearch=borncamp%2C+D&version=1" class="above") The Astrophysics Data System
 
   script(src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js")
   script(src="js/particleCFG.js")
