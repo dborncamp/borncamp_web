@@ -1,0 +1,20 @@
+﻿extends layout
+
+block content
+  link(href="css/landing.css" rel="stylesheet" type="text/css")
+  meta(name="description" content="David Borncamp's resume")
+  title "Slides using Reveal.js
+
+  #particle
+  .container
+    .row
+      .col-lg-12
+        #jumbo.jumbotron
+          .inner
+          h2 Slides for presentations I have made:
+          p
+            | Slides about what I do:
+            a(href='/slides/aboutme' class="btn btn-primary btn-lg above" role="button" ) About Me
+
+  script(src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js")
+  script(src="js/particleCFG.js")
