@@ -14,14 +14,41 @@ block content
         #jumbo.jumbotron.container-fluid
           .inner
             h1 Welcome to Dave Borncamp's site!
-            h2 About me:
+            h2 Me Currently:
             img(src='pictures/dborncamp_hair_small.jpg' class=' pull-left headshot img-rounded img-responsive')
             p
               
-              | I am currently a Senior Research and Instrument Analyst at Space Telescope Science Institute.
-              | I work on the Hubble Space Telescope's Advanced Camera for Surveys instrument team where my work focuses on instrument calibrations to keep it producing awesome science.
-              | This includes advanced studies of the detector's dark current, geometric distortion, and flat fields.
-              | To accomplish my work I use Python and IDL for exploratory data analysis and software development.
+              | I am currently a Senior Research and Instrument Analyst at Space Telescope Science Institute
+              | where I work on the Hubble Space Telescope's Advanced Camera for Surveys instrument team.
+              | My work mostly focuses on instrument calibrations to keep the camera producing the highest possible quality data.
+
+             
+        #jumbo.jumbotron
+          .inner
+            h2 My Functional Work
+            P
+              | At STScI I primarily use Python and IDL for exploratory data analysis and software development 
+              | Using Python and IDL enables me to regurarly perform advanced studies of the detector's health which include investigations into several parts of the detector such as:
+              ul
+                li 
+                  p.list Image analysis: 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://www.stsci.edu/hst/acs/documents/isrs/isr1601.pdf") ACS ISR 2016-01 
+                    | , and 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://dx.doi.org/10.1017/S1743921316012631") IAU Astroinformatics
+                li 
+                  p.list dark current: 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://www.stsci.edu/hst/acs/documents/isrs/isr1705.pdf") ACS ISR 2017-05 
+                li
+                  p.list geometric distortion: 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://www.stsci.edu/hst/acs/documents/tirs/tir1402.pdf") ACS TIR 2014-02
+                    | , 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://www.stsci.edu/hst/acs/documents/isrs/isr1502.pdf") ACS ISR 2015-02
+                    | , and 
+                    a(class="btn btn-primary btn-lg round above" role="button" href="http://www.stsci.edu/hst/acs/documents/isrs/isr1506.pdf") ACS ISR 2015-06
+                li 
+                  p.list flat fields: 
+                    a(class="round btn btn-primary btn-lg above" role="button" href="http://adsabs.harvard.edu/cgi-bin/nph-data_query?bibcode=2015IAUGA..2249873B&db_key=AST&link_type=ABSTRACT") 2015IAUGA..2249873B 
+                    
 
         #jumbo.jumbotron
           .inner
@@ -32,7 +59,7 @@ block content
               | This came out of my degree in Astronomy at the University of Colorado where I worked with Marc Buie at Southwest Research Institute to characterize pluto and discover KBO's for the New Horizons Mission to look at after it passes Pluto.
             P
               | A list of my piblishings can be found on 
-              a(href="http://adsabs.harvard.edu/cgi-bin/basic_connect?qsearch=borncamp%2C+D&version=1" class="above") The Astrophysics Data System
+              a(class="round btn btn-primary btn-lg above" role="button" href="http://adsabs.harvard.edu/cgi-bin/basic_connect?qsearch=borncamp%2C+D&version=1" class="above") The Astrophysics Data System
 
   script(src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js")
   script(src="js/particleCFG.js")
