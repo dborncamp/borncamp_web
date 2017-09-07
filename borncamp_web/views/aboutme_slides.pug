@@ -5,9 +5,13 @@ html(lang='en')
     title Dave Borncamp - About Me
     meta(name='description', content='Dave Borncamp - About Me Slides')
     meta(name='author', content='Dave Borncamp')
+    link(rel="apple-touch-icon", sizes="76x76", href="../favicon/apple-touch-icon.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="../favicon/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="../favicon/favicon-16x16.png")
+    link(rel='stylesheet', href='../css/aboutme.css')
+    link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css')
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css')
-    link(rel='stylesheet', href='../css/aboutme.css')
     script(src="../js/googleAnalytics.js")
     // Printing and PDF exports
     script.
@@ -18,6 +22,7 @@ html(lang='en')
       document.getElementsByTagName( 'head' )[0].appendChild( link );
   body
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
     .reveal
       // Any section element inside of this container is displayed as a slide
       .slides
@@ -69,9 +74,11 @@ html(lang='en')
           section
             h2 Geometric Distortion
             p With Vera Platais - ACS has pretty bad distortions...
-            div
-              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/Before_distortion.png', alt='Before distortion correction')
-              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/After_distortion.png', alt='After distortion correction')
+            .row
+              .col-sm-6
+                img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/Before_distortion.png', alt='Before distortion correction')
+              .col-sm-6
+                img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/After_distortion.png', alt='After distortion correction')
           section
             h2 Flat Fields
             p Polarizers are complicated but cool
@@ -97,16 +104,20 @@ html(lang='en')
           section
             h2 Pluto
             p Occultations of Pluto
-            img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/fig1_redo3_color.png', alt='Pluto Occultation')
+            div
+              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/fig1_redo3_color.png', alt='Pluto Occultation')
           section
             h2 New Horizons
             p Searched for new KBOs for it to look at after Pluto encounter
-            div
-              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/tripletDiscovery.png', alt='25.6 Mag object')
-              video(controls='')
-                source(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/VNH0001.mp4', type='video/mp4', alt='VNH0001')
-                |                                     I'm sorry; your browser doesn't support HTML5 video in WebM with VP8/VP9 or MP4 with H.264.
-              img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/HSTfield.png', alt='HST search field')
+            .row
+              .col-sm-4
+                img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/tripletDiscovery.png', alt='25.6 Mag object')
+              .col-sm-4
+                video(controls='')
+                  source(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/VNH0001.mp4', type='video/mp4', alt='VNH0001')
+                  |                                     I'm sorry; your browser doesn't support HTML5 video in WebM with VP8/VP9 or MP4 with H.264.
+              .col-sm-4
+                img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/HSTfield.png', alt='HST search field')
           section
             h2 Cosmic Rays
             p Science with calibration images!
@@ -128,5 +139,7 @@ html(lang='en')
       height: "100%",
       margin: 0,
       minScale: 1,
-      maxScale: 1
+      maxScale: 1,
+      history: true,
+      slideNumber: true
       });
