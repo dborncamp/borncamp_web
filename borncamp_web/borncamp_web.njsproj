@@ -7,6 +7,7 @@
     <ScriptArguments>
     </ScriptArguments>
     <NodeExePath>C:\Program Files (x86)\nodejs\node.exe</NodeExePath>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,18 +44,45 @@
     <Compile Include="controllers\resumeController.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controllers\webglController.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="controllers\slidesController.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\js\geometry.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\js\googleAnalytics.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\js\initShaders.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\js\initShaders2.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\js\MV.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\js\particleCFG.js" />
     <Compile Include="public\js\stabilityPlot.js" />
+    <Compile Include="public\js\test.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\js\two_objects.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\js\webgl-utils.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="html\landingTest.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\css\aboutme.css" />
+    <Content Include="public\css\canvas.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\css\footer.css">
       <SubType>Code</SubType>
     </Content>
@@ -88,6 +116,9 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\resume.pug">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\webGL.pug">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\slides.pug">

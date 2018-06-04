@@ -15,6 +15,7 @@ const quiz1Controller = require('./controllers/quiz1');
 const landingController = require('./controllers/landingController');
 const resumeController = require('./controllers/resumeController');
 const slidesController = require('./controllers/slidesController');
+const webglController = require('./controllers/webglController');
 
 
 /**
@@ -36,6 +37,7 @@ app.get('/quiz1', quiz1Controller.index);
 app.get('/resume', resumeController.index);
 app.get('/slides', slidesController.index);
 app.get('/slides/aboutme', slidesController.aboutme);
+app.get('/webgl', webglController.shaders);
 
 /**
  * Error Handler.
