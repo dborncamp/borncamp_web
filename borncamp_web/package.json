@@ -14,7 +14,7 @@
     "express-status-monitor": "^0.1.9",
     "express-validator": "^3.2.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.3",
+    "mongoose": "^5.7.5",
     "morgan": "^1.8.2",
     "path": "^0.12.7",
     "pug": "^2.0.0-rc.2"
