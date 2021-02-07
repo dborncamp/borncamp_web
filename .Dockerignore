@@ -1,0 +1,10 @@
+borncamp_web/node_modules
+borncamp_web/html
+.git/
+
+Dockerfile
+.gitignore
+.gitattributes
+
+*.sln
+*.md
