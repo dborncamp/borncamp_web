@@ -5,7 +5,6 @@ const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
 const expressValidator = require('express-validator');
 const chalk = require('chalk');
-const flash = require('express-flash');
 
 
 /**
@@ -49,7 +48,6 @@ app.use(errorHandler());
  */
 app.listen(app.get('port'), () => {
     console.log('%s App is running at http://0.0.0.0:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
-
     console.log('  Press CTRL-C to stop\n');
 });
 

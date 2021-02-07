@@ -13,15 +13,16 @@
     "express-flash": "0.0.2",
     "express-status-monitor": "^1.3.3",
     "express-validator": "^3.2.1",
+    "jade": "^1.11.0",
     "moment": "^2.27.0",
     "mongoose": "^5.9.21",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "pug": "2.0.4"
+    "pug": "^2.0.4"
   },
   "description": "borncamp_web",
   "devDependencies": {},
   "main": "app.js",
   "name": "borncamp_web",
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
