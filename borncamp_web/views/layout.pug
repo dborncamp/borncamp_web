@@ -17,11 +17,12 @@ html
 
     link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     link(href='css/footer.css' rel='stylesheet' type='text/css')
-    script(src="js/googleAnalytics.js")
+    //script(src="js/googleAnalytics.pug.js")
   body
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous")
     include partials/header
+    include partials/googleAnalytics
 
     .contain
       block content
