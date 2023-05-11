@@ -53,7 +53,7 @@
     <Compile Include="public\js\geometry.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="public\js\googleAnalytics.js">
+    <Compile Include="public\js\googleAnalytics.pug.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="public\js\initShaders.js">
