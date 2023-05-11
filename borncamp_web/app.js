@@ -3,7 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
-const expressValidator = require('express-validator');
+// const expressValidator = require('express-validator');
 const chalk = require('chalk');
 
 
@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(expressStatusMonitor());
 app.use(logger('dev'));
-app.use(expressValidator());
+// app.use(expressValidator());
 
 // allow it to see the public folder
 app.use(express.static(path.join(__dirname, 'public')));
