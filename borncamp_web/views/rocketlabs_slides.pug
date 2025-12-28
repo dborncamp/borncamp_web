@@ -11,8 +11,10 @@ html(lang='en')
     link(rel='stylesheet', href='../css/aboutme.css')
     //link(href="css/landing.css" rel="stylesheet" type="text/css")
     link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css')
-    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/solarized.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/monokai.min.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css")
     //- script(src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js")
     //script(src="../js/googleAnalytics.pug.js")
     // Printing and PDF exports
@@ -26,6 +28,7 @@ html(lang='en')
     include partials/googleAnalytics
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js")
     .reveal
       // Any section element inside of this container is displayed as a slide
       .slides
@@ -51,31 +54,55 @@ html(lang='en')
             h3 Objective
             p 
               | Design and implement a REST API to manage satellite telemetry data.
-            h3 Implementation
             ul
-              li Flask with SQLite storage backend
-              li Everything revolves around the 
-                a(href='#/api') `/telemetry` endpoint.
+              li Flask with SQLite storage backend.
+              li Vite is used to run both the back and front end and control the communication between them: 
+              pre 
+                code(data-trim data-noescape data-line-numbers) 
+                  | export default defineConfig({
+                  |   plugins: [react()],
+                  |   server: {
+                  |     proxy: {
+                  |       '/telemetry': 'http://localhost:5000/',
+                  |     },
+                  |   }
+                  | })
+              li The API revolves around the 
+                code /telemetry 
+                a(href='#/api') endpoint.
           section#api
             h2 API
             ul
-              li POST /telemetry: Add a new telemetry entry.
+              li POST 
+                code /telemetry: 
+                | Add a new telemetry entry.
               ul 
                 li Request body should include:
                 pre
-                  | {satelliteId: "string", 
-                  |  timestamp: "ISO 8601 datetime", 
-                  |  altitude: "number", 
-                  |  velocity: "number", 
-                  |  status: "string"}
-              li GET /telemetry: Retrieve all telemetry data.
+                  code(data-trim data-noescape data-line-numbers)
+                    | {"satelliteId": "string", 
+                    |  "timestamp": "ISO 8601 datetime", 
+                    |  "altitude": "number", 
+                    |  "velocity": "number", 
+                    |  "status": "string"}
+              li GET 
+                code /telemetry: 
+                | Retrieve all telemetry data.
               ul
                 li Optional query parameters:
                 ul
-                  li satelliteId: Filter by satellite ID.
-                  li status: Filter by health status (e.g., “healthy”, “critical”).
-              li GET /telemetry/:id: Retrieve a specific telemetry entry by ID.
-              li DELETE /telemetry/:id: Delete a specific telemetry entry.
+                  li 
+                    code satelliteId 
+                    | Filter by satellite ID.
+                  li 
+                    code status 
+                    | Filter by health status (e.g., “healthy”, “critical”).
+              li GET 
+                code /telemetry/:id 
+                | Retrieve a specific telemetry entry by ID.
+              li DELETE 
+              code /telemetry/:id 
+              | Delete a specific telemetry entry.
           section 
             h2 Implementation
             ul
@@ -164,7 +191,12 @@ html(lang='en')
                 li UI improvements (color scheme, buttons, add pages, etc).
                 li Break up App.jsx to be more modular.
                 li Add ability to stream data.
-    script(src='https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js')
+        section#demo
+          section
+            h2 Demo
+            a(href="http://localhost:5000" data-preview-link)
+              | Open the demo
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js')
     script.
       Reveal.initialize(
       {slideNumber: true,
@@ -174,5 +206,6 @@ html(lang='en')
       minScale: 1,
       maxScale: 1,
       history: true,
-      slideNumber: true
+      slideNumber: true,
+      plugins: [RevealHighlight]
       });
