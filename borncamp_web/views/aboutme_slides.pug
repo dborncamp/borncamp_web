@@ -32,8 +32,8 @@ html(lang='en')
           h1 Dave Borncamp
           img(src='https://s3.amazonaws.com/vedadev/aboutmeSlides/headshot.jpg', alt='Dave Borncamp')
           p
-            | Chief Software Architect at
-            | Ball Aerospace
+            | Principal Technical Manager at
+            | SciTec, Inc.
         section
           section
             h2 Background
@@ -43,6 +43,7 @@ html(lang='en')
               li 2011 - BA Astronomy @ CU Boulder
               li 2013 - AS Computer Programming and Geographic Information Systems @ FRCC
               li 2016 - MS Computer Science @ Towson University
+              li 2021 - Post Graduate Certificate in Space Resource @ Colorado School of Mines
               li 2022 - MS Space Resource @ Colorado School of Mines
           section
             h3 Work
@@ -67,23 +68,41 @@ html(lang='en')
                   li Solutions Team Lead
               br
               li
-                | 2021 - present: Ball Aerospace
+                | 2021 - 2024: Ball Aerospace
                 ul
                   li Chief Software Architect
-                  li Chimera and Gremlin Tech Lead
+              br
+              li
+                | 2024 - present: SciTec, Inc
+                ul
+                  li Test Infrastructure Lead
         section
           section#Ball
             h2 Ball
             ul
               li Chief Software Architect for Non-Conventional Imaging
-              li Tech Lead
+              li Tech Lead on multiple programs
               ul
                 li Chimera
                 li Gremlin
+                li StarDust
           section
-            h2 Placeholder for Architect
+            h2 Software Architect
+            ul
+              li Contribute to proposals and system architecture for several programs and see developemt through to delivery.
+              li Work with customers to gather requirements and translate them into system designs.
+              li Work with internal stakeholders to ensure program delivery.
+              li Mentor engineers on best practices and design patterns.
           section
-            h2 Placeholder for programs
+            h2 Chimera and Gremlin
+            ul
+              li Design and implement multiple services to perform image processing on embedded systems and using Kubernetes for offboard processing.
+              li Services are designed to be modular and reusable across multiple programs
+              li Technologies used include C++, Python, Docker, Kubernetes, and various image processing libraries.
+            h2 StarDust
+            ul
+              li Designed a Kafka based event driven distributed system to perform near real-time image processing.
+              li System is designed to be scalable and reliable using Kubernetes and written in Python.
         section
           section#Decipher
             h2 Decipher
@@ -94,11 +113,23 @@ html(lang='en')
                 li ETL Pipeline
                 li NLP
           section
-            h2 Placeholder for Core Services
+            h2 Core Services
+            ul
+              li Lead a team of developers to build and maintain several core services used by DI2E and DiceLab applications.
+              li Services include authentication, authorization, user management, and data storage within the MEME ecosystem.
+              li Ensure deployment using GreyMatter sidecars for scalability, reliability, and zero trust security.
           section
-              h2 Placeholder for pipeline
+            h2 NiFi ETL Pipeline
+            ul
+              li Built and maintained several NiFi data flows to move and process data using GreyMatter Data.
+              li Created a custom NiFi processor to handle complex data transformations called 
+              a(href='https://github.com/greymatter-io/nifi-sdk') Greymatter NiFi SDK.
           section
-            h2 Placeholder for NLP
+            h2 Multiple Natural Language Processing Services
+            ul
+              li Develop several microservices to handle Natural Language Processing tasks such as Named Entity Recognition, Part of Speech tagging, and Text Summarization, and coreferencing.
+              li Used state of the art NLP libraries such as SpaCy by HuggingFace Transformers to build these services.
+              li Also develop a Scala processer using Rozaka to perform NLP tasks in a distributed fashion.
         section
           section#Functional
             h2 Functional Work
@@ -167,7 +198,7 @@ html(lang='en')
           section
             h2 Frontier Fields
             p Frontier Fields pipeline team
-            img(src='https://media.stsci.edu/uploads/story/display_image/1181/low_STSCI-H-p1720a-k-1340x520.png', alt='Abell 370')
+            img(src='https://frontierfields.org/wp-content/uploads/2014/01/combo_abell_370.png', alt='Abell 370')
         section
           h2 Thats it for now
           iframe.giphy-embed(src='https://giphy.com/embed/NYrOxNlH7lwys', width='480', height='364', frameborder='0', allowfullscreen='')
@@ -177,8 +208,8 @@ html(lang='en')
     script.
       Reveal.initialize(
       {slideNumber: true,
-      width: "100%",
-      height: "100%",
+      width: "90%",
+      height: "90%",
       margin: 0,
       minScale: 1,
       maxScale: 1,

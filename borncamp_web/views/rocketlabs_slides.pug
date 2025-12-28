@@ -1,0 +1,178 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Dave Borncamp - 2025 Rocket Lab Slides
+    meta(name='description', content='Dave Borncamp - 2025 Rocket Lab Slides')
+    meta(name='author', content='Dave Borncamp')
+    link(rel="apple-touch-icon", sizes="76x76", href="../favicon/apple-touch-icon.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="../favicon/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="../favicon/favicon-16x16.png")
+    link(rel='stylesheet', href='../css/aboutme.css')
+    //link(href="css/landing.css" rel="stylesheet" type="text/css")
+    link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css')
+    //- script(src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js")
+    //script(src="../js/googleAnalytics.pug.js")
+    // Printing and PDF exports
+    script.
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css' : 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+  body
+    include partials/googleAnalytics
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
+    .reveal
+      // Any section element inside of this container is displayed as a slide
+      .slides
+        section
+          h1 Challenge Overview
+          p
+            | Create a Satellite Telemetry Dashboard. 
+          h3 Goal:
+          p
+            | Display and manage telemetry data from satellites using a defined API and React FrontEnd.
+            ul 
+              li 
+                a(href='#/backend') Backend
+              li 
+                a(href='#/frontend') Frontend
+              li 
+                a(href='#/packaging') Packaging and deployments
+              li
+                a(href='#/improvements') Potential improvements
+        section#backend
+          section
+            h2 Backend
+            h3 Objective
+            p 
+              | Design and implement a REST API to manage satellite telemetry data.
+            h3 Implementation
+            ul
+              li Flask with SQLite storage backend
+              li Everything revolves around the 
+                a(href='#/api') `/telemetry` endpoint.
+          section#api
+            h2 API
+            ul
+              li POST /telemetry: Add a new telemetry entry.
+              ul 
+                li Request body should include:
+                pre
+                  | {satelliteId: "string", 
+                  |  timestamp: "ISO 8601 datetime", 
+                  |  altitude: "number", 
+                  |  velocity: "number", 
+                  |  status: "string"}
+              li GET /telemetry: Retrieve all telemetry data.
+              ul
+                li Optional query parameters:
+                ul
+                  li satelliteId: Filter by satellite ID.
+                  li status: Filter by health status (e.g., “healthy”, “critical”).
+              li GET /telemetry/:id: Retrieve a specific telemetry entry by ID.
+              li DELETE /telemetry/:id: Delete a specific telemetry entry.
+          section 
+            h2 Implementation
+            ul
+              li Flask based backend. 
+              ul 
+              li Sources
+                ul
+                  li I leaned heavily on the 
+                    a(href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world") FlaskMega Tutorial 
+                    | for the backend structure and ideas.
+                  li And the 
+                    a(href="https://blog.miguelgrinberg.com/post/create-a-react-flask-project-in-2025") React + Flask series 
+                    | help with getting react and Flask to talk to each other.
+              li Kee points
+                ul
+                  li Flask framework API functions are handled in api.py (this could be broken out for greater Modularity).
+                  li Separate function to do validations for easier testing.
+                  li Utilities and configuration items are in util.py.
+                  li SQLite database used for a data store.
+                  li Pagination implemented with sorting (defaulting to ascending id).
+        section#frontend
+          section
+            h2 Frontend
+            h3 Objective
+            p 
+              | Design and implement a web interface to display and manage satellite telemetry data.
+            p Expected functionality:
+              ul
+                li Display a table of telemetry data with columns: Satellite ID, Timestamp, Altitude, Velocity, Health Status.
+                li Allow users to filter telemetry data by Satellite ID and Health Status.
+                li Provide a form to add new telemetry entries.
+                li Allow users to delete telemetry entries stored in the backend.
+          section 
+            h2 Implementation
+            ul 
+              li Utilizes React
+              ul 
+                li Utilizes React's useState, useEffect, and useRef
+                ul 
+                  li useState for keeping track of items in the UI such as telemetry info, sorting states, pagination, and data for graphing.
+                  li useEffect is used for fetching and filtering of data.
+                  li useRef is only currently used to initialize an empty temetry graph.
+                li Most of the code is centered around app.jsx which functions as the controller for all frontend functionality.
+                li Uses formData to manage user inputs to be sent the backend.
+          section 
+            h2 Design
+            ul 
+              li Intended to be more of a dashboard feel.
+              li Only a single page layout was implemented for this to meet requirements. This should be broken out in the future to allow users to go deeper into the data.
+              li Colors are picked with the goal to be somewhat contrasting to increase accassability.
+              li Errors with validation or backend communication are reported to the user so the user knows what went wrong.
+          section 
+            h2 Working With the Backend
+            ul 
+              li Input validation happens on the client side before being sent to the backend for processing.
+              ul 
+                li This includes ensuring that a record is complete, date formatting, and numbers are valid (like velocity which cannot be negative).
+              li Async calls and promises to the backend are used to not block while the user is waiting.
+        section#packaging
+          section
+            h2 Packaging and Deployments
+            ul 
+              li Local Development
+              ul
+                li Local developemnt requires Python 3.11+ for backend and node, NPM, and Yarn for frontend. See README for instructions.
+              li Docker
+              ul
+                li A pre-built Docker image is pushed to Docker Hub to allow for an easy spin up.
+                li It contains both backend and frontend implimentations
+              li Helm & k8s
+              ul 
+                li Helm charts are provided to allow fo easy deployment into a Kuberentes based system.
+        section#improvements
+          section
+            h2 Potential Improvements
+            ul
+              li Break apart front end and backend.
+              li Break out the data store.
+              li Backend improvements.
+              ul
+                li Add more configuration options.
+                li Add other health types.
+                li Add Authentication.
+              li Frontend Improvements
+              ul
+                li UI improvements (color scheme, buttons, add pages, etc).
+                li Break up App.jsx to be more modular.
+                li Add ability to stream data.
+    script(src='https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js')
+    script.
+      Reveal.initialize(
+      {slideNumber: true,
+      width: "90%",
+      height: "90%",
+      margin: 0,
+      minScale: 1,
+      maxScale: 1,
+      history: true,
+      slideNumber: true
+      });

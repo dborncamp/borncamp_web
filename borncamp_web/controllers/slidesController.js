@@ -17,3 +17,13 @@ exports.aboutme = (req, res) => {
         title: "About Me Slides"
     });
 };
+
+/**
+ * GET /
+ * The rocketlabs.
+ */
+exports.rocketlabs = (req, res) => {
+    res.render('rocketlabs_slides', {
+        title: "RocketLabs Code Challenge"
+    });
+};
