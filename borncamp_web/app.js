@@ -4,7 +4,6 @@ const logger = require('morgan');
 const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
 // const expressValidator = require('express-validator');
-const chalk = require('chalk');
 
 
 /**
@@ -47,7 +46,8 @@ app.use(errorHandler());
 /**
  * Start Express server.
  */
-app.listen(app.get('port'), () => {
+app.listen(app.get('port'), async () => {
+    const chalk = (await import('chalk')).default;
     console.log('%s App is running at http://0.0.0.0:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
     console.log('  Press CTRL-C to stop\n');
 });

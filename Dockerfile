@@ -1,4 +1,4 @@
-FROM node:12.18.2-alpine3.11
+FROM node:24-alpine
 WORKDIR /usr/src/app
 
 COPY borncamp_web/package*.json ./
