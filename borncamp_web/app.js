@@ -14,6 +14,7 @@ const landingController = require('./controllers/landingController');
 const resumeController = require('./controllers/resumeController');
 const slidesController = require('./controllers/slidesController');
 const webglController = require('./controllers/webglController');
+const weddingController = require('./controllers/weddingController');
 
 
 /**
@@ -37,6 +38,9 @@ app.get('/slides', slidesController.index);
 app.get('/slides/aboutme', slidesController.aboutme);
 app.get('/slides/rocketlabs', slidesController.rocketlabs);
 app.get('/webgl', webglController.shaders);
+app.get('/wedding', weddingController.index);
+app.post('/wedding/rsvp', weddingController.rsvpUpload, weddingController.validateRsvp, weddingController.submitRsvp);
+app.post('/wedding/photos', weddingController.galleryUpload, weddingController.submitPhotos);
 
 /**
  * Error Handler.

@@ -1,0 +1,103 @@
+extends layout
+
+block content
+  link(href="css/landing.css" rel="stylesheet" type="text/css")
+  link(href="css/canvas.css" rel="stylesheet" type="text/css")
+  link(href="css/wedding.css" rel="stylesheet" type="text/css")
+  meta(name="description" content="Wedding RSVP, FAQ, and photo sharing")
+
+  .container#wedding
+    .row
+      .col-lg-12
+        .jumbotron
+          .inner
+            h1 We're Getting Married!
+            p
+              | Join us at Moss Denver for our big day.
+              | RSVP below, check the FAQ for the details, and share your photos in the gallery.
+
+    .row
+      .col-lg-12
+        #rsvp.jumbotron
+          .inner
+            .panel.panel-default
+              .panel-heading
+                h2 RSVP
+                if rsvpSuccess
+                  .alert.alert-success Thank you! Your RSVP has been received.
+                if rsvpError
+                  .alert.alert-danger= rsvpError
+                form(action="/wedding/rsvp" method="POST" enctype="multipart/form-data" novalidate)
+                  .form-group(class=errors.names ? 'has-error' : undefined)
+                    label(for="names") Name(s) *
+                    input#names.form-control(type="text" name="names" autocomplete="name" required value=form.names)
+                    if errors.names
+                      span.help-block= errors.names
+                  .form-group(class=errors.email ? 'has-error' : undefined)
+                    label(for="email") Email *
+                    input#email.form-control(type="email" name="email" autocomplete="email" required value=form.email)
+                    if errors.email
+                      span.help-block= errors.email
+                  .form-group(class=errors.address ? 'has-error' : undefined)
+                    label(for="address") Address *
+                    input#address.form-control(type="text" name="address" autocomplete="street-address" required value=form.address)
+                    if errors.address
+                      span.help-block= errors.address
+                  .form-group(class=errors.attending ? 'has-error' : undefined)
+                    label Will you be attending? *
+                    .radio
+                      label
+                        input(type="radio" name="attending" value="yes" required checked=form.attending === 'yes')
+                        | Joyfully accepts
+                    .radio
+                      label
+                        input(type="radio" name="attending" value="no" checked=form.attending === 'no')
+                        | Regretfully declines
+                    if errors.attending
+                      span.help-block= errors.attending
+                  .form-group(class=errors.partySize ? 'has-error' : undefined)
+                    label(for="partySize") Number of people in your party *
+                    input#partySize.form-control(type="number" name="partySize" min="1" step="1" required value=form.partySize)
+                    if errors.partySize
+                      span.help-block= errors.partySize
+                  .form-group(class=errors.kids ? 'has-error' : undefined)
+                    label(for="kids") How many kids?
+                    input#kids.form-control(type="number" name="kids" min="0" step="1" placeholder="0" value=form.kids)
+                    if errors.kids
+                      span.help-block= errors.kids
+                  .form-group(class=errors.vegetarians ? 'has-error' : undefined)
+                    label(for="vegetarians") How many vegetarians?
+                    input#vegetarians.form-control(type="number" name="vegetarians" min="0" step="1" placeholder="0" value=form.vegetarians)
+                    if errors.vegetarians
+                      span.help-block= errors.vegetarians
+                  button.btn.btn-primary.btn-lg(type="submit") Send RSVP
+
+    .row
+      .col-lg-12
+        #faq.jumbotron
+          .inner
+            h2 Frequently Asked Questions
+            each item in faq
+              .panel.panel-default
+                .panel-heading
+                  h3.panel-title= item.question
+                .panel-body= item.answer
+
+    .row
+      .col-lg-12
+        #gallery.jumbotron
+          .inner
+            h2 Share Your Photos
+            p Have photos of us or from the celebration? Upload them here — we'd love to see them.
+            if gallerySuccess
+              .alert.alert-success Thanks for sharing! Your photos have been received.
+            if galleryError
+              .alert.alert-danger= galleryError
+            form.gallery-upload(action="/wedding/photos" method="POST" enctype="multipart/form-data")
+              .form-group
+                label(for="uploadedBy") Your name
+                input#uploadedBy.form-control(type="text" name="uploadedBy" placeholder="Guest")
+              .form-group
+                label(for="galleryPhotos") Upload your photos
+                input#galleryPhotos(type="file" name="photos" accept="image/*" multiple required)
+              button.btn.btn-primary(type="submit") Upload Photos
