@@ -6,9 +6,10 @@
  * are not displayed on the page.
  *
  * Configuration (environment variables):
- *   MONGODB_URI - Mongo connection string (default mongodb://localhost:27017)
- *   MONGODB_DB  - database name (default borncamp)
- *   AWS credentials are picked up from the standard AWS SDK provider chain.
+ *   MONGODB_URI           - Mongo connection string (default mongodb://localhost:27017)
+ *   MONGODB_DB            - database name (default borncamp)
+ *   AWS_ACCESS_KEY_ID     - access key id for the S3 photo uploads (required)
+ *   AWS_SECRET_ACCESS_KEY - secret access key for the S3 photo uploads (required)
  */
 const crypto = require('crypto');
 const multer = require('multer');
@@ -23,7 +24,13 @@ const S3_PREFIX = 'wedding/photos/';
 const RSVP_COLLECTION = 'weddingRsvps';
 const PHOTO_COLLECTION = 'weddingPhotos';
 
-const s3 = new S3Client({ region: S3_REGION });
+const s3 = new S3Client({
+    region: S3_REGION,
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+});
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI || 'mongodb://localhost:27017', {
     serverSelectionTimeoutMS: 5000
@@ -40,20 +47,24 @@ async function getDb() {
 
 const faq = [
     {
-        question: 'Are kids allowed?',
-        answer: 'Yes'
+        question: 'When is the wedding?',
+        answer: 'Saturday, February 27, 2027'
+    },
+    {
+        question: 'What is the schedule?',
+        answer: 'Starting at 4:00 PM until 11:00 PM'
     },
     {
         question: 'Location',
         answer: 'The wedding will take place at Moss Denver, located at 200 Santa Fe Dr, Denver, CO 80223.'
     },
     {
-        question: 'Parking',
-        answer: 'Parking is available across the street from the venue, but we encourage carpooling or using ride-sharing services.'
+        question: 'Are kids allowed?',
+        answer: 'Yes'
     },
     {
-        question: 'What is the schedule?',
-        answer: 'Starting at 4:00 PM until 11:00 PM'
+        question: 'Parking',
+        answer: 'Parking is available across the street from the venue, but we encourage carpooling or using ride-sharing services.'
     },
     {
         question: 'Is there a registry?',
