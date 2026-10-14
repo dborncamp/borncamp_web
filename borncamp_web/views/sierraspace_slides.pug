@@ -1,0 +1,255 @@
+//- Sierra Space interview presentation, sized to run about 35 minutes:
+//-   Introduction         ~9 min   title, agenda, background, experience
+//-   Technical Challenge  ~16 min
+//-   Sierra Space Values  ~9 min
+//-   Thank you            ~1 min
+//- Anything with the .todo class is a stub that still needs real content.
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Dave Borncamp - Sierra Space Slides
+    meta(name='description', content='Dave Borncamp - Sierra Space Slides')
+    meta(name='author', content='Dave Borncamp')
+    link(rel="apple-touch-icon", sizes="76x76", href="../favicon/apple-touch-icon.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="../favicon/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="../favicon/favicon-16x16.png")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.css')
+    //- The minified solarized theme on cdnjs drops the Lato font import, so load the full file
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/theme/solarized.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/solarized-light.min.css')
+    link(rel='stylesheet', href='../css/sierraspace.css')
+    //- Printing and PDF exports are built into this version of reveal.js: add ?print-pdf to the URL
+  body
+    .reveal
+      // Any section element inside of this container is displayed as a slide
+      .slides
+        section
+          h1 Dave Borncamp
+          img.title-image(src='../pictures/DreamChaser.jpg', alt='Dave Borncamp with the Dream Chaser spaceplane')
+          p Principal Engineering Manager & Software Architect
+        section
+          h2 Agenda
+          ul
+            li
+              a(href='#/intro') Introduction
+              ul
+                li Who I am and how I got here
+            li
+              a(href='#/challenge') Technical Challenge
+              ul
+                li Controlling message release from a Kubernetes cluster
+            li
+              a(href='#/values') Sierra Space Values
+              ul
+                li We Are One Team
+        //- Part 1: Introduction (~9 min including the title and agenda)
+        //- Brief: a brief overview of who you are, with background, experience, and
+        //- highlights that showcase the professional journey.
+        section
+          section#intro
+            h2 Background
+            p
+              | 16+ years building distributed systems, ground systems, and integrating
+              | Flight Software while leading engineering teams in defense, space,
+              | intelligence, and academic domains.
+          section
+            h3 Education
+            ul
+              li 2011 - BA Astronomy @ CU Boulder
+              li 2013 - AS Computer Programming and Geographic Information Systems @ FRCC
+              li 2016 - MS Computer Science @ Towson University
+              li 2021 - Graduate Certificate in Space Resources @ Colorado School of Mines
+              li 2022 - MS Space Resources @ Colorado School of Mines
+          section
+            h3 Work
+            ul
+              li
+                | 2010 - 2013: Southwest Research Institute
+                ul
+                  li
+                    p Research Assistant
+              li
+                | 2013 - 2017: Space Telescope Science Institute
+                ul
+                  li
+                    p Sr. Research & Instrument Analyst
+              li
+                | 2017 - 2021: Decipher Technology Studios
+                ul
+                  li
+                    p Solutions Team Lead
+              li
+                | 2021 - 2024: BAE Systems (Ball Aerospace)
+                ul
+                  li
+                    p Chief Software Architect
+              li
+                | 2024 - present: SciTec, Inc
+                ul
+                  li
+                    p Principal Engineering Manager
+        //- Part 2: Technical Challenge (~16 min)
+        //- Brief: explain the context of the challenge, the steps taken to address it, and the
+        //- outcome. Highlight the problem-solving approach and the skills used to overcome it.
+        //- The stubs assume default-deny egress plus an allow list for the release path. Rework
+        //- them to match what was actually built. The names, label, and address in the two
+        //- example policies are placeholders.
+        section
+          section#challenge
+            h2 Technical Challenge
+            h3 Controlling Message Release from a Kubernetes Cluster
+            ul
+              li
+                a(href='#/context') Context
+              li
+                a(href='#/approach') Approach
+              li
+                a(href='#/outcome') Outcome
+          section#context
+            h2 Context
+            ul
+              li MDPAP is an operational missile detection, tracking, and warning system that is currently in use by the US Space Force.
+              li In an operational MDPAP system, data can be played back or simulated to test the system or review a previous event to compare it to what is currently happening.
+              li We needed to ensure that messages that were only in an `operations` state and were marked correctly would be released from the cluster to end users throughout the world.
+
+            p 
+            p Takeaway - 3 conditions needed to be met for a message release: correct instance state, simulation tag, and playback tag.
+
+          section
+            h2 The Challenge
+            ul
+              li There are MANY messages flying around the system and we have very tight latency requirements.
+              li If a bad message were to leave a system, there are many downstream consequences.
+              li The legacy system used adaptors that unpacked every message in every cluster to match the release requirements.
+          section
+            h2 Solution Space - Kubernetes Network Policies
+            ul
+              li By default pods are not isolated: all traffic in and out is allowed but a NetworkPolicy selects pods by label and lists the ingress or egress they are allowed
+              li Once selected, a pod only gets the traffic a policy allows in that direction.
+              li The CNI plugin enforces policies, so they do nothing without one that supports them.
+            ul 
+              li By implementing Network Policies we could check initial conditions for state without unpacking the messages which saved a lot of processing time and latency in the system.
+          section#approach
+            h2 Approach
+            ul
+              li We implemented message gateways that are basically proxies which have external connections.
+              li The gateways would check the data packets for simulation and playback data on arrival.
+              li A Kubernetes operator and CRD allowed us to control this all based on state of the cluster
+          section
+            h2 Start From Default Deny
+            ul 
+              li Network policies are fairly easy to implement, but default denying everything cuts off all communication to the pod
+            pre
+              code.language-yaml(data-trim data-line-numbers)
+                | apiVersion: networking.k8s.io/v1
+                | kind: NetworkPolicy
+                | metadata:
+                |   name: default-deny-egress
+                |   namespace: communications
+                | spec:
+                |   podSelector: {annotations...}
+                |   policyTypes:
+                |     - Egress
+          section
+            h2 Allow the Release Path
+            pre
+              code.language-yaml(data-trim data-line-numbers)
+                | apiVersion: networking.k8s.io/v1
+                | kind: NetworkPolicy
+                | metadata:
+                |   name: allow-message-release
+                | spec:
+                |   podSelector:
+                |     matchLabels:
+                |       app: message-release
+                |   policyTypes:
+                |     - Egress
+                |   egress:
+                |     - to:
+                |         - ipBlock:
+                |             ranges
+                |       ports:
+                |         - protocol: TCP
+                |           port: port
+            p Once the conditions are met, the CRD will allow the pod to communicate via the policy.
+          section#outcome
+            h2 Outcome
+            ul
+              li This allowed us to reclaim ~10% of CPU power in the system to be used elsewhere.
+              li Ensured that we met our release requirements at a cluster level, even if we had code that tried to release messages, it was not allowed.
+              li Communication Pods had to be restarted to ensure that long lasting connections like sockets are terminated.
+          section
+            h2 Problem Solving and Skills
+            ul
+              li The problem was easier solved by breaking out the state into the cluster level and the data tagging at the message level.
+              li By removing one of the problems and solving for that condition first, efficiencies can be gained.
+              li Future work:
+              ul 
+                li Consider breaking out metadata from the message to make it quicker to unmarshal.
+                li Hot load the pods so that they do not need to be restarted.
+        //- Part 3: Alignment with Sierra Space Values (~9 min)
+        //- Brief: reflect on how the approach to the technical challenge aligns with the value,
+        //- with specific examples of work ethic, decision-making, or collaboration.
+        //- The values document asks for one value and "a time when", so anchor this on one story.
+        section
+          section#values
+            h2 Sierra Space Values
+            h3 We Are One Team
+            p
+              em Describe a time when you contributed to fostering a strong sense of teamwork and collaboration within your team.
+            ul
+              li
+                a(href='#/whiteboarding') Whiteboarding sessions
+              li
+                a(href='#/totem') The "thank you" totem
+              li
+                a(href='#/shoutouts') Team shoutouts
+          section
+            h2 The Team
+            ul
+              li The team is 11 engineers spread across multiple timezones and 3 companies.
+              li Each area and company had their own culture and way of working.
+              li I needed the team to be cohesive, with active participation from everyone to get the best product.
+          section#whiteboarding
+            h2 Whiteboarding Sessions
+            ul
+              li Ownership is key to long term success.
+              li Allowing the engineers to come up with key pieces of the design gives them that agency that is needed for real ownership.
+              li Whiteboarding sessions allow the engineers to come together and discuss possibilities and dig into the design, rather than be told to implement something
+              li It also allows for communication that is technical which can help form the basis of a real bond between people.
+          section#totem
+            h2 The "Thank You" or "Great Work" Totem
+            ul
+              li Recognition is a key piece to motivating people, but it doesn't have to be complicated or expensive.
+              li Expressing gratitude to others on the team helps form a better bond and builds good habits and bonds.
+              li A totem (in this case, a simple clay wizard) is passed to another person during a scrum at least once a sprint with the giver saying why the next person deserved it.
+              li These could be small things, or major things. The idea is to just get people to interact more in a positive way.
+            p.todo TODO: Photo of the totem
+          section#shoutouts
+            h2 Team Shoutouts
+            ul
+              li A simple kind word can motivate people to move mountains, and positive reinforcement is often lacking from the workforce.
+              li An email or acknowledgement during a meeting can mean the world to some people.
+          section
+            h2 What Changed
+            ul
+              li Engineers from multiple companies can be frequently seen talking and being friends.
+              li Collaboration across timezones is much higher because people feel safe in reaching out and know the other people on their team as people.
+        section
+          h2 Thank You!
+          p Questions?
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/reveal.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.2.1/plugin/highlight/highlight.min.js')
+    script.
+      Reveal.initialize(
+      {slideNumber: true,
+      width: "90%",
+      height: "90%",
+      margin: 0,
+      minScale: 1,
+      maxScale: 1,
+      history: true,
+      plugins: [RevealHighlight]
+      });

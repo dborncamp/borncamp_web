@@ -9,7 +9,6 @@ const expressStatusMonitor = require('express-status-monitor');
 /**
  * Set up controller
  */
-const quiz1Controller = require('./controllers/quiz1');
 const landingController = require('./controllers/landingController');
 const resumeController = require('./controllers/resumeController');
 const slidesController = require('./controllers/slidesController');
@@ -32,11 +31,11 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', landingController.index);
-app.get('/quiz1', quiz1Controller.index);
 app.get('/resume', resumeController.index);
 app.get('/slides', slidesController.index);
 app.get('/slides/aboutme', slidesController.aboutme);
 app.get('/slides/rocketlabs', slidesController.rocketlabs);
+app.get('/slides/sierraspace', slidesController.sierraspace);
 app.get('/webgl', webglController.shaders);
 app.get('/wedding', weddingController.index);
 app.post('/wedding/rsvp', weddingController.rsvpUpload, weddingController.validateRsvp, weddingController.submitRsvp);

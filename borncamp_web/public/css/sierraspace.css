@@ -1,0 +1,25 @@
+/* Match the text size of the About Me slides */
+:root {
+    --r-main-font-size: 36px;
+}
+
+/* Keep the title photo on one screen with the name and job title */
+.reveal section img.title-image {
+    max-height: max(180px, calc(90vh - 340px));
+}
+
+/* Stubbed content that still needs to be written */
+.reveal .todo {
+    color: #cb4b16;
+    font-style: italic;
+}
+
+/* Show a whole policy without scrolling inside the code block */
+.reveal pre {
+    padding: 0;
+}
+
+.reveal pre code {
+    max-height: 65vh;
+    padding: 0.5em 1em;
+}

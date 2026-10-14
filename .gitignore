@@ -261,3 +261,6 @@ __pycache__/
 *.pyc
 
 notes.md
+.claude/
+*.docx
+*.pdf

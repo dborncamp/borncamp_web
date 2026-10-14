@@ -27,3 +27,13 @@ exports.rocketlabs = (req, res) => {
         title: "RocketLabs Code Challenge"
     });
 };
+
+/**
+ * GET /
+ * The sierraspace slides.
+ */
+exports.sierraspace = (req, res) => {
+    res.render('sierraspace_slides', {
+        title: "Sierra Space Slides"
+    });
+};
